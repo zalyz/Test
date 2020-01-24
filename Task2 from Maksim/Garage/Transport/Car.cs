@@ -23,7 +23,7 @@ namespace Garage.Transport
 
         public double MaintenanceCost()
         {
-            double coastOfMaintenance = ((this.MaxFuelQuantity - this.FuelQuantity) * Prise.Fuel) + (this.NumberOfWheels * Prise.WheelMaintenance) + Prise.TransportWash + Prise.OilChange;
+            double coastOfMaintenance = ((this.MaxFuelQuantity - this.FuelQuantity) * Price.Fuel) + (this.NumberOfWheels * Price.WheelMaintenance) + Price.TransportWash + Price.OilChange;
             return coastOfMaintenance;
         }
 
