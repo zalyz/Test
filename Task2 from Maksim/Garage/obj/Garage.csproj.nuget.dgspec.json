@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Sergey\\Desktop\\копия\\prikol C#\\Task2 from Maksim\\Garage\\Garage.csproj": {}
+    "C:\\Users\\slava\\Desktop\\копия\\prikol C#\\Task2 from Maksim\\Garage\\Garage.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Sergey\\Desktop\\копия\\prikol C#\\Task2 from Maksim\\Garage\\Garage.csproj": {
+    "C:\\Users\\slava\\Desktop\\копия\\prikol C#\\Task2 from Maksim\\Garage\\Garage.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Sergey\\Desktop\\копия\\prikol C#\\Task2 from Maksim\\Garage\\Garage.csproj",
+        "projectUniqueName": "C:\\Users\\slava\\Desktop\\копия\\prikol C#\\Task2 from Maksim\\Garage\\Garage.csproj",
         "projectName": "Garage",
-        "projectPath": "C:\\Users\\Sergey\\Desktop\\копия\\prikol C#\\Task2 from Maksim\\Garage\\Garage.csproj",
-        "packagesPath": "C:\\Users\\Sergey\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Sergey\\Desktop\\копия\\prikol C#\\Task2 from Maksim\\Garage\\obj\\",
+        "projectPath": "C:\\Users\\slava\\Desktop\\копия\\prikol C#\\Task2 from Maksim\\Garage\\Garage.csproj",
+        "packagesPath": "C:\\Users\\slava\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\slava\\Desktop\\копия\\prikol C#\\Task2 from Maksim\\Garage\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Sergey\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\slava\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
