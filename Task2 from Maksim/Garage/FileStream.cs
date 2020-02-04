@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using Garage.Clases;
+using Garage.ClasesOfTransport;
 
 namespace Garage
 {
     /// <summary>
     /// Class contains methods for reading information from the file or writing to it.
     /// </summary>
-    public static class FileStream
+    internal static class FileStream
     {
         private const string DefaultFileForVehicleInformation = @"Transport.txt";
 
@@ -59,42 +59,22 @@ namespace Garage
         /// <param name="listOfTransport">Contains information about the transport.</param>
         private static void FileReading(List<Transport> listOfTransport)
         {
-            using (StreamReader reader = new StreamReader(DefaultFileForVehicleInformation))
+            using (var reader = new StreamReader(DefaultFileForVehicleInformation))
             {
                 while (!reader.EndOfStream)
                 {
                     switch (reader.ReadLine())
                     {
                         case "Car":
-                            var car = new Car
-                            {
-                                RegistrationNumber = reader.ReadLine(),
-                                MaxSpeed = int.Parse(reader.ReadLine()),
-                                MaxFuelQuantity = double.Parse(reader.ReadLine()),
-                                FuelQuantity = double.Parse(reader.ReadLine()),
-                                NumberOfWheels = int.Parse(reader.ReadLine()),
-                            };
+                            var car = CreateCar(reader);
                             listOfTransport.Add(car);
                             break;
                         case "Boat":
-                            var boat = new Boat
-                            {
-                                RegistrationNumber = reader.ReadLine(),
-                                MaxSpeed = int.Parse(reader.ReadLine()),
-                                MaxFuelQuantity = double.Parse(reader.ReadLine()),
-                                FuelQuantity = double.Parse(reader.ReadLine()),
-                            };
+                            var boat = CreateBoat(reader);
                             listOfTransport.Add(boat);
                             break;
                         case "Plane":
-                            var plane = new Plane
-                            {
-                                RegistrationNumber = reader.ReadLine(),
-                                MaxSpeed = int.Parse(reader.ReadLine()),
-                                MaxFuelQuantity = double.Parse(reader.ReadLine()),
-                                FuelQuantity = double.Parse(reader.ReadLine()),
-                                NumberOfWheels = int.Parse(reader.ReadLine()),
-                            };
+                            var plane = CreatePlane(reader);
                             listOfTransport.Add(plane);
                             break;
                         default:
@@ -104,46 +84,96 @@ namespace Garage
             }
         }
 
+        private static Boat CreateBoat(StreamReader reader)
+        {
+            return new Boat
+            {
+                RegistrationNumber = reader.ReadLine(),
+                MaxSpeed = int.Parse(reader.ReadLine()),
+                MaxFuelQuantity = double.Parse(reader.ReadLine()),
+                FuelQuantity = double.Parse(reader.ReadLine()),
+            };
+        }
+
+        private static Car CreateCar(StreamReader reader)
+        {
+            return new Car
+            {
+                RegistrationNumber = reader.ReadLine(),
+                MaxSpeed = int.Parse(reader.ReadLine()),
+                MaxFuelQuantity = double.Parse(reader.ReadLine()),
+                FuelQuantity = double.Parse(reader.ReadLine()),
+                NumberOfWheels = int.Parse(reader.ReadLine()),
+            };
+        }
+
+        private static Plane CreatePlane(StreamReader reader)
+        {
+            return new Plane
+            {
+                RegistrationNumber = reader.ReadLine(),
+                MaxSpeed = int.Parse(reader.ReadLine()),
+                MaxFuelQuantity = double.Parse(reader.ReadLine()),
+                FuelQuantity = double.Parse(reader.ReadLine()),
+                NumberOfWheels = int.Parse(reader.ReadLine()),
+            };
+        }
+
         /// <summary>
         /// Writing to the file.
         /// </summary>
         /// <param name="listOfTransprt">Contains information about the transport.</param>
         private static void FileWriting(List<Transport> listOfTransprt)
         {
-            using (StreamWriter writer = new StreamWriter(DefaultFileForVehicleInformation))
+            using (var writer = new StreamWriter(DefaultFileForVehicleInformation))
             {
                 foreach (var item in listOfTransprt)
                 {
                     switch (item.NumberForSearch)
                     {
                         case 1:
-                            writer.WriteLine("Car");
-                            writer.WriteLine(item.MaxSpeed);
-                            writer.WriteLine(item.MaxFuelQuantity);
-                            writer.WriteLine(item.FuelQuantity);
-                            writer.WriteLine(item.NumberOfWheels);
-                            writer.WriteLine(item.RegistrationNumber);
+                            WriteBoatInformationToFile(writer, item);
                             break;
                         case 2:
-                            writer.WriteLine("Boat");
-                            writer.WriteLine(item.MaxSpeed);
-                            writer.WriteLine(item.MaxFuelQuantity);
-                            writer.WriteLine(item.FuelQuantity);
-                            writer.WriteLine(item.RegistrationNumber);
+                            WriteCarInformationToFile(writer, item);
                             break;
                         case 3:
-                            writer.WriteLine("Plane");
-                            writer.WriteLine(item.MaxSpeed);
-                            writer.WriteLine(item.MaxFuelQuantity);
-                            writer.WriteLine(item.FuelQuantity);
-                            writer.WriteLine(item.NumberOfWheels);
-                            writer.WriteLine(item.RegistrationNumber);
+                            WritePlaneInformationToFile(writer, item);
                             break;
                         default:
                             throw new FormatException();
                     }
                 }
             }
+        }
+
+        private static void WriteBoatInformationToFile(StreamWriter writer, Transport item)
+        {
+            writer.WriteLine("Boat");
+            writer.WriteLine(item.MaxSpeed);
+            writer.WriteLine(item.MaxFuelQuantity);
+            writer.WriteLine(item.FuelQuantity);
+            writer.WriteLine(item.RegistrationNumber);
+        }
+
+        private static void WriteCarInformationToFile(StreamWriter writer, Transport item)
+        {
+            writer.WriteLine("Car");
+            writer.WriteLine(item.MaxSpeed);
+            writer.WriteLine(item.MaxFuelQuantity);
+            writer.WriteLine(item.FuelQuantity);
+            writer.WriteLine(item.NumberOfWheels);
+            writer.WriteLine(item.RegistrationNumber);
+        }
+
+        private static void WritePlaneInformationToFile(StreamWriter writer, Transport item)
+        {
+            writer.WriteLine("Plane");
+            writer.WriteLine(item.MaxSpeed);
+            writer.WriteLine(item.MaxFuelQuantity);
+            writer.WriteLine(item.FuelQuantity);
+            writer.WriteLine(item.NumberOfWheels);
+            writer.WriteLine(item.RegistrationNumber);
         }
     }
 }

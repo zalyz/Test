@@ -4,108 +4,108 @@
         <name>Garage</name>
     </assembly>
     <members>
-        <member name="T:Garage.Clases.Boat">
+        <member name="T:Garage.ClasesOfTransport.Boat">
             <summary>
             Class describes water transport.
             </summary>
         </member>
-        <member name="P:Garage.Clases.Boat.NumberOfWheels">
+        <member name="P:Garage.ClasesOfTransport.Boat.NumberOfWheels">
             <summary>
             Gets number of transport wheels.
             </summary>
         </member>
-        <member name="P:Garage.Clases.Boat.IsSoundSignal">
+        <member name="P:Garage.ClasesOfTransport.Boat.IsSoundSignal">
             <inheritdoc/>
         </member>
-        <member name="P:Garage.Clases.Boat.NumberForSearch">
+        <member name="P:Garage.ClasesOfTransport.Boat.NumberForSearch">
             <inheritdoc/>
         </member>
-        <member name="M:Garage.Clases.Boat.MaintenanceCost">
+        <member name="M:Garage.ClasesOfTransport.Boat.MaintenanceCost">
             <inheritdoc/>
         </member>
-        <member name="M:Garage.Clases.Boat.ToString">
+        <member name="M:Garage.ClasesOfTransport.Boat.ToString">
             <inheritdoc/>
         </member>
-        <member name="T:Garage.Clases.Car">
+        <member name="T:Garage.ClasesOfTransport.Car">
             <summary>
             Class describes ground transport.
             </summary>
         </member>
-        <member name="P:Garage.Clases.Car.NumberOfWheels">
+        <member name="P:Garage.ClasesOfTransport.Car.NumberOfWheels">
             <summary>
             Gets or Sets number of transport wheels.
             </summary>
         </member>
-        <member name="P:Garage.Clases.Car.IsSoundSignal">
+        <member name="P:Garage.ClasesOfTransport.Car.IsSoundSignal">
             <inheritdoc/>
         </member>
-        <member name="P:Garage.Clases.Car.NumberForSearch">
+        <member name="P:Garage.ClasesOfTransport.Car.NumberForSearch">
             <inheritdoc/>
         </member>
-        <member name="M:Garage.Clases.Car.MaintenanceCost">
+        <member name="M:Garage.ClasesOfTransport.Car.MaintenanceCost">
             <inheritdoc/>
         </member>
-        <member name="M:Garage.Clases.Car.ToString">
+        <member name="M:Garage.ClasesOfTransport.Car.ToString">
             <inheritdoc/>
         </member>
-        <member name="T:Garage.Clases.Plane">
+        <member name="T:Garage.ClasesOfTransport.Plane">
             <summary>
             Class describes air transport.
             </summary>
         </member>
-        <member name="P:Garage.Clases.Plane.NumberOfWheels">
+        <member name="P:Garage.ClasesOfTransport.Plane.NumberOfWheels">
             <summary>
             Gets or Sets number of transport wheels.
             </summary>
         </member>
-        <member name="P:Garage.Clases.Plane.IsSoundSignal">
+        <member name="P:Garage.ClasesOfTransport.Plane.IsSoundSignal">
             <inheritdoc/>
         </member>
-        <member name="P:Garage.Clases.Plane.NumberForSearch">
+        <member name="P:Garage.ClasesOfTransport.Plane.NumberForSearch">
             <inheritdoc/>
         </member>
-        <member name="M:Garage.Clases.Plane.MaintenanceCost">
+        <member name="M:Garage.ClasesOfTransport.Plane.MaintenanceCost">
             <inheritdoc/>
         </member>
-        <member name="M:Garage.Clases.Plane.ToString">
+        <member name="M:Garage.ClasesOfTransport.Plane.ToString">
             <inheritdoc/>
         </member>
-        <member name="T:Garage.Clases.Transport">
+        <member name="T:Garage.ClasesOfTransport.Transport">
             <summary>
             Class that describes the same characteristics of all transports.
             </summary>
         </member>
-        <member name="P:Garage.Clases.Transport.MaxSpeed">
+        <member name="P:Garage.ClasesOfTransport.Transport.MaxSpeed">
             <summary>
             Gets or sets maximum speed of transport.
             </summary>
         </member>
-        <member name="P:Garage.Clases.Transport.MaxFuelQuantity">
+        <member name="P:Garage.ClasesOfTransport.Transport.MaxFuelQuantity">
             <summary>
             Gets or Sets maximum amount of transport fuel.
             </summary>
         </member>
-        <member name="P:Garage.Clases.Transport.FuelQuantity">
+        <member name="P:Garage.ClasesOfTransport.Transport.FuelQuantity">
             <summary>
             Gets or Sets amount of trnasport fuel at that moment.
             </summary>
         </member>
-        <member name="P:Garage.Clases.Transport.NumberOfWheels">
+        <member name="P:Garage.ClasesOfTransport.Transport.NumberOfWheels">
             <summary>
             Gets or Sets number Of transport wheels.
             </summary>
         </member>
-        <member name="P:Garage.Clases.Transport.RegistrationNumber">
+        <member name="P:Garage.ClasesOfTransport.Transport.RegistrationNumber">
             <summary>
             Gets or Sets registration number fo the vehicle.
             </summary>
         </member>
-        <member name="P:Garage.Clases.Transport.IsSoundSignal">
+        <member name="P:Garage.ClasesOfTransport.Transport.IsSoundSignal">
             <summary>
             Gets a value indicating whether the ability to send an sound signal.
             </summary>
         </member>
-        <member name="P:Garage.Clases.Transport.NumberForSearch">
+        <member name="P:Garage.ClasesOfTransport.Transport.NumberForSearch">
             <summary>
             Gets number that is used to search specific type of transport or sort by type of transport.
             </summary>
@@ -115,27 +115,27 @@
             Class contains methods for reading information from the file or writing to it.
             </summary>
         </member>
-        <member name="M:Garage.FileStream.IsReadFileTo(System.Collections.Generic.List{Garage.Clases.Transport})">
+        <member name="M:Garage.FileStream.IsReadFileTo(System.Collections.Generic.List{Garage.ClasesOfTransport.Transport})">
             <summary>
             Return true if the file was successful read, otherwise false.
             </summary>
             <param name="listOfTransport">List contains the transports from the file.</param>
             <returns>Return true or throw an exception.</returns>
         </member>
-        <member name="M:Garage.FileStream.IsSaveInFileFrom(System.Collections.Generic.List{Garage.Clases.Transport})">
+        <member name="M:Garage.FileStream.IsSaveInFileFrom(System.Collections.Generic.List{Garage.ClasesOfTransport.Transport})">
             <summary>
             Return true if file written is successful, otherwise false.
             </summary>
             <param name="listOfTransprt">List contains the transports that should be written to the file.</param>
             <returns>Return true or throw an exception.</returns>
         </member>
-        <member name="M:Garage.FileStream.FileReading(System.Collections.Generic.List{Garage.Clases.Transport})">
+        <member name="M:Garage.FileStream.FileReading(System.Collections.Generic.List{Garage.ClasesOfTransport.Transport})">
             <summary>
             Reading from the file.
             </summary>
             <param name="listOfTransport">Contains information about the transport.</param>
         </member>
-        <member name="M:Garage.FileStream.FileWriting(System.Collections.Generic.List{Garage.Clases.Transport})">
+        <member name="M:Garage.FileStream.FileWriting(System.Collections.Generic.List{Garage.ClasesOfTransport.Transport})">
             <summary>
             Writing to the file.
             </summary>
@@ -151,6 +151,37 @@
             Computes the cost of maintenance.
             </summary>
             <returns>The cost of maintenance vehicle.</returns>
+        </member>
+        <member name="T:Garage.MenuProcessing">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Garage.MenuProcessing.ShowMenuItems">
+            <summary>
+            Shows menu items for user.
+            </summary>
+        </member>
+        <member name="M:Garage.MenuProcessing.TransportProcessing(System.Boolean@,System.Boolean@,System.Boolean@,System.Collections.Generic.List{Garage.ClasesOfTransport.Transport})">
+            <summary>
+            Contains the execution logic for each menu item.
+            </summary>
+            <param name="isExitFromMenu">Indicates whether the user wants to exit the menu or not.</param>
+            <param name="isSuccessFullRead">Reflects the success of reading the file.</param>
+            <param name="isSuccessFullWrite">Reflects the success of writing to the file.</param>
+            <param name="listOfTransport">Contains information about transports.</param>
+        </member>
+        <member name="M:Garage.MenuProcessing.ShowTransportInfo(System.Collections.Generic.List{Garage.ClasesOfTransport.Transport})">
+            <summary>
+            Output transport information to the console.
+            </summary>
+            <param name="listOfTransport">List whith transports.</param>
+        </member>
+        <member name="M:Garage.MenuProcessing.EnterNumber">
+            <summary>
+            Checking for correct entry of the menu item number.
+            </summary>
+            <returns>Item number.</returns>
         </member>
         <member name="T:Garage.Price">
             <summary>
@@ -182,37 +213,11 @@
             At this class pogram is starts.
             </summary>
         </member>
-        <member name="M:Garage.Program.TransportProcessing(System.Boolean@,System.Boolean@,System.Boolean@,System.Collections.Generic.List{Garage.Clases.Transport})">
-            <summary>
-            Contains the execution logic for each menu item.
-            </summary>
-            <param name="isExitFromMenu">Indicates whether the user wants to exit the menu or not.</param>
-            <param name="isSuccessFullRead">Reflects the success of reading the file.</param>
-            <param name="isSuccessFullWrite">Reflects the success of writing to the file.</param>
-            <param name="listOfTransport">Contains information about transports.</param>
-        </member>
-        <member name="M:Garage.Program.ShowMenuItems">
-            <summary>
-            Shows menu items for user.
-            </summary>
-        </member>
         <member name="M:Garage.Program.ShowMessage(System.String)">
             <summary>
             Shows message whith pause.
             </summary>
             <param name="message">Message that sould be shown.</param>
-        </member>
-        <member name="M:Garage.Program.ShowTransportInfo(System.Collections.Generic.List{Garage.Clases.Transport})">
-            <summary>
-            Output transport information to the console.
-            </summary>
-            <param name="listOfTransport">List whith transports.</param>
-        </member>
-        <member name="M:Garage.Program.EnterNumber">
-            <summary>
-            Checking for correct entry of the menu item number.
-            </summary>
-            <returns>Item number.</returns>
         </member>
         <member name="M:Garage.Program.SetDefaultPrise">
             <summary>

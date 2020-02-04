@@ -3,7 +3,7 @@
     /// <summary>
     /// Class contains prices for certain services.
     /// </summary>
-    public static class Price
+    internal static class Price
     {
         /// <summary>
         /// Gets or Sets the cost of whell maintenance.

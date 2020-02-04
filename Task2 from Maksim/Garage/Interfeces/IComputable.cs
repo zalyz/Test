@@ -3,7 +3,7 @@
     /// <summary>
     /// Allow to compute maintanance cost.
     /// </summary>
-    public interface IComputable
+    internal interface IComputable
     {
         /// <summary>
         /// Computes the cost of maintenance.
