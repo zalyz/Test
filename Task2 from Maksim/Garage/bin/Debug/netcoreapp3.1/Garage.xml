@@ -17,10 +17,7 @@
         <member name="P:Garage.ClasesOfTransport.Boat.IsSoundSignal">
             <inheritdoc/>
         </member>
-        <member name="P:Garage.ClasesOfTransport.Boat.NumberForSearch">
-            <inheritdoc/>
-        </member>
-        <member name="M:Garage.ClasesOfTransport.Boat.MaintenanceCost">
+        <member name="M:Garage.ClasesOfTransport.Boat.GetMaintenanceCost">
             <inheritdoc/>
         </member>
         <member name="M:Garage.ClasesOfTransport.Boat.ToString">
@@ -39,10 +36,7 @@
         <member name="P:Garage.ClasesOfTransport.Car.IsSoundSignal">
             <inheritdoc/>
         </member>
-        <member name="P:Garage.ClasesOfTransport.Car.NumberForSearch">
-            <inheritdoc/>
-        </member>
-        <member name="M:Garage.ClasesOfTransport.Car.MaintenanceCost">
+        <member name="M:Garage.ClasesOfTransport.Car.GetMaintenanceCost">
             <inheritdoc/>
         </member>
         <member name="M:Garage.ClasesOfTransport.Car.ToString">
@@ -61,10 +55,7 @@
         <member name="P:Garage.ClasesOfTransport.Plane.IsSoundSignal">
             <inheritdoc/>
         </member>
-        <member name="P:Garage.ClasesOfTransport.Plane.NumberForSearch">
-            <inheritdoc/>
-        </member>
-        <member name="M:Garage.ClasesOfTransport.Plane.MaintenanceCost">
+        <member name="M:Garage.ClasesOfTransport.Plane.GetMaintenanceCost">
             <inheritdoc/>
         </member>
         <member name="M:Garage.ClasesOfTransport.Plane.ToString">
@@ -105,48 +96,29 @@
             Gets a value indicating whether the ability to send an sound signal.
             </summary>
         </member>
-        <member name="P:Garage.ClasesOfTransport.Transport.NumberForSearch">
-            <summary>
-            Gets number that is used to search specific type of transport or sort by type of transport.
-            </summary>
-        </member>
         <member name="T:Garage.FileStream">
             <summary>
             Class contains methods for reading information from the file or writing to it.
             </summary>
         </member>
-        <member name="M:Garage.FileStream.IsReadFileTo(System.Collections.Generic.List{Garage.ClasesOfTransport.Transport})">
+        <member name="M:Garage.FileStream.ReadFileTo(System.Collections.Generic.List{Garage.ClasesOfTransport.Transport})">
             <summary>
             Return true if the file was successful read, otherwise false.
             </summary>
             <param name="listOfTransport">List contains the transports from the file.</param>
-            <returns>Return true or throw an exception.</returns>
-        </member>
-        <member name="M:Garage.FileStream.IsSaveInFileFrom(System.Collections.Generic.List{Garage.ClasesOfTransport.Transport})">
-            <summary>
-            Return true if file written is successful, otherwise false.
-            </summary>
-            <param name="listOfTransprt">List contains the transports that should be written to the file.</param>
-            <returns>Return true or throw an exception.</returns>
         </member>
         <member name="M:Garage.FileStream.FileReading(System.Collections.Generic.List{Garage.ClasesOfTransport.Transport})">
             <summary>
-            Reading from the file.
+            Reading data from the file.
             </summary>
             <param name="listOfTransport">Contains information about the transport.</param>
-        </member>
-        <member name="M:Garage.FileStream.FileWriting(System.Collections.Generic.List{Garage.ClasesOfTransport.Transport})">
-            <summary>
-            Writing to the file.
-            </summary>
-            <param name="listOfTransprt">Contains information about the transport.</param>
         </member>
         <member name="T:Garage.Interfeces.IComputable">
             <summary>
             Allow to compute maintanance cost.
             </summary>
         </member>
-        <member name="M:Garage.Interfeces.IComputable.MaintenanceCost">
+        <member name="M:Garage.Interfeces.IComputable.GetMaintenanceCost">
             <summary>
             Computes the cost of maintenance.
             </summary>
@@ -154,7 +126,7 @@
         </member>
         <member name="T:Garage.MenuProcessing">
             <summary>
-            
+            Contain menu items and methods for executing them.
             </summary>
         </member>
         <member name="M:Garage.MenuProcessing.ShowMenuItems">
@@ -162,13 +134,11 @@
             Shows menu items for user.
             </summary>
         </member>
-        <member name="M:Garage.MenuProcessing.TransportProcessing(System.Boolean@,System.Boolean@,System.Boolean@,System.Collections.Generic.List{Garage.ClasesOfTransport.Transport})">
+        <member name="M:Garage.MenuProcessing.TransportProcessing(System.Boolean@,System.Collections.Generic.List{Garage.ClasesOfTransport.Transport})">
             <summary>
             Contains the execution logic for each menu item.
             </summary>
             <param name="isExitFromMenu">Indicates whether the user wants to exit the menu or not.</param>
-            <param name="isSuccessFullRead">Reflects the success of reading the file.</param>
-            <param name="isSuccessFullWrite">Reflects the success of writing to the file.</param>
             <param name="listOfTransport">Contains information about transports.</param>
         </member>
         <member name="M:Garage.MenuProcessing.ShowTransportInfo(System.Collections.Generic.List{Garage.ClasesOfTransport.Transport})">
@@ -221,7 +191,7 @@
         </member>
         <member name="M:Garage.Program.SetDefaultPrise">
             <summary>
-            Sets default prises for calculating.
+            Sets default prises for calculating maintenance cost.
             </summary>
         </member>
     </members>

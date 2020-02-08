@@ -25,18 +25,15 @@ namespace Garage
             Console.WriteLine("6: Least expensive transport in service.");
             Console.WriteLine("7: Transports whith sound signal.");
             Console.WriteLine("8: Read information from file.");
-            Console.WriteLine("9: Save information in file.");
-            Console.WriteLine("10: Exit.");
+            Console.WriteLine("9: Exit.");
         }
 
         /// <summary>
         /// Contains the execution logic for each menu item.
         /// </summary>
         /// <param name="isExitFromMenu">Indicates whether the user wants to exit the menu or not.</param>
-        /// <param name="isSuccessFullRead">Reflects the success of reading the file.</param>
-        /// <param name="isSuccessFullWrite">Reflects the success of writing to the file.</param>
         /// <param name="listOfTransport">Contains information about transports.</param>
-        public static void TransportProcessing(ref bool isExitFromMenu, ref bool isSuccessFullRead, ref bool isSuccessFullWrite, List<Transport> listOfTransport)
+        public static void TransportProcessing(ref bool isExitFromMenu, List<Transport> listOfTransport)
         {
             switch (EnterNumber())
             {
@@ -62,12 +59,9 @@ namespace Garage
                     ShowTransportsWhithSoundSignal(listOfTransport);
                     break;
                 case 8:
-                    ReadingInformationFromFile(ref isSuccessFullRead, listOfTransport);
+                    ReadingInformationFromFile(listOfTransport);
                     break;
                 case 9:
-                    WritingInformationToAFile(ref isSuccessFullWrite, listOfTransport);
-                    break;
-                case 10:
                     isExitFromMenu = true;
                     break;
                 default:
@@ -107,7 +101,7 @@ namespace Garage
         {
             try
             {
-                int number = int.Parse(Console.ReadLine());
+                var number = int.Parse(Console.ReadLine());
                 return number;
             }
             catch
@@ -116,22 +110,10 @@ namespace Garage
             }
         }
 
-        private static void WritingInformationToAFile(ref bool isSuccessFullWrite, List<Transport> listOfTransport)
+        private static void ReadingInformationFromFile(List<Transport> listOfTransport)
         {
-            isSuccessFullWrite = FileStream.IsSaveInFileFrom(listOfTransport);
-            if (isSuccessFullWrite)
-            {
-                Program.ShowMessage("Information is recorded successfully.");
-            }
-        }
-
-        private static void ReadingInformationFromFile(ref bool isSuccessFullRead, List<Transport> listOfTransport)
-        {
-            isSuccessFullRead = FileStream.IsReadFileTo(listOfTransport);
-            if (isSuccessFullRead)
-            {
-                Program.ShowMessage("The file was read successfully.");
-            }
+            FileStream.ReadFileTo(listOfTransport);
+            Program.ShowMessage("The file was read successfully.");
         }
 
         private static void ShowTransportsWhithSoundSignal(List<Transport> listOfTransport)
@@ -141,8 +123,8 @@ namespace Garage
 
         private static void ShowLeastExpensiveTransportInService(List<Transport> listOfTransport)
         {
-            var minMaintenanceCost = listOfTransport.Min(e => ((IComputable)e).MaintenanceCost());
-            ShowTransportInfo(listOfTransport.Where(e => ((IComputable)e).MaintenanceCost() == minMaintenanceCost).ToList());
+            var minMaintenanceCost = listOfTransport.Min(e => ((IComputable)e).GetMaintenanceCost());
+            ShowTransportInfo(listOfTransport.Where(e => ((IComputable)e).GetMaintenanceCost() == minMaintenanceCost).ToList());
         }
 
         private static void ShowTheFastestTransport(List<Transport> listOfTransport)
@@ -153,22 +135,25 @@ namespace Garage
 
         private static void OrderAndShowListOfTransport(List<Transport> listOfTransport)
         {
-            ShowTransportInfo(listOfTransport.OrderBy(e => e.NumberForSearch).ToList());
+            var orderedListOfTransports = listOfTransport.Where(e => e is Car);
+            orderedListOfTransports = orderedListOfTransports.Concat(listOfTransport.Where(e => e is Boat));
+            orderedListOfTransports = orderedListOfTransports.Concat(listOfTransport.Where(e => e is Plane));
+            ShowTransportInfo(orderedListOfTransports.ToList());
         }
 
         private static void ShowListOfPlanes(List<Transport> listOfTransport)
         {
-            ShowTransportInfo(listOfTransport.Where(e => e.NumberForSearch == 3).ToList());
+            ShowTransportInfo(listOfTransport.Where(e => e is Plane).ToList());
         }
 
         private static void ShowListOfBoats(List<Transport> listOfTransport)
         {
-            ShowTransportInfo(listOfTransport.Where(e => e.NumberForSearch == 2).ToList());
+            ShowTransportInfo(listOfTransport.Where(e => e is Boat).ToList());
         }
 
         private static void ShowListOfCars(List<Transport> listOfTransport)
         {
-            ShowTransportInfo(listOfTransport.Where(e => e.NumberForSearch == 1).ToList());
+            ShowTransportInfo(listOfTransport.Where(e => e is Car).ToList());
         }
     }
 }

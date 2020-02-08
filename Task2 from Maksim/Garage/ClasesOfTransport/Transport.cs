@@ -34,10 +34,5 @@
         /// Gets a value indicating whether the ability to send an sound signal.
         /// </summary>
         public abstract bool IsSoundSignal { get; }
-
-        /// <summary>
-        /// Gets number that is used to search specific type of transport or sort by type of transport.
-        /// </summary>
-        public abstract int NumberForSearch { get; }
     }
 }

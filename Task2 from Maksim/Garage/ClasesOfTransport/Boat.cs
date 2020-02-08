@@ -20,13 +20,10 @@ namespace Garage.ClasesOfTransport
         public override bool IsSoundSignal { get; } = false;
 
         /// <inheritdoc/>
-        public override int NumberForSearch { get; } = DefaultNumberOfBoat;
-
-        /// <inheritdoc/>
-        public double MaintenanceCost()
+        public double GetMaintenanceCost()
         {
-            int litersForOilChange = 1;
-            double coastOfMaintenance = (this.MaxFuelQuantity - this.FuelQuantity) * Price.Fuel;
+            var litersForOilChange = 1;
+            var coastOfMaintenance = (this.MaxFuelQuantity - this.FuelQuantity) * Price.Fuel;
             coastOfMaintenance += this.NumberOfWheels * Price.WheelMaintenance;
             coastOfMaintenance += Price.OilChange * litersForOilChange;
             return coastOfMaintenance;
@@ -35,13 +32,12 @@ namespace Garage.ClasesOfTransport
         /// <inheritdoc/>
         public override string ToString()
         {
-            string transportInfo;
-            transportInfo =
+            var transportInfo =
                 $"Boat №:  \t{this.RegistrationNumber}\n" +
                 $"Speed:   \t{this.MaxSpeed}(km/h)\n" +
                 $"Fuel:    \t{this.FuelQuantity}/{this.MaxFuelQuantity}\n" +
-                $"Service: \t{this.MaintenanceCost()}$";
-            return transportInfo.ToString();
+                $"Service: \t{this.GetMaintenanceCost()}$";
+            return transportInfo;
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using Garage.ClasesOfTransport;
+using System.Configuration;
 
 namespace Garage
 {
@@ -10,19 +11,15 @@ namespace Garage
     /// </summary>
     internal static class FileStream
     {
-        private const string DefaultFileForVehicleInformation = @"Transport.txt";
-
         /// <summary>
         /// Return true if the file was successful read, otherwise false.
         /// </summary>
         /// <param name="listOfTransport">List contains the transports from the file.</param>
-        /// <returns>Return true or throw an exception.</returns>
-        public static bool IsReadFileTo(List<Transport> listOfTransport)
+        public static void ReadFileTo(List<Transport> listOfTransport)
         {
             try
             {
                 FileReading(listOfTransport);
-                return true;
             }
             catch
             {
@@ -31,60 +28,45 @@ namespace Garage
         }
 
         /// <summary>
-        /// Return true if file written is successful, otherwise false.
-        /// </summary>
-        /// <param name="listOfTransprt">List contains the transports that should be written to the file.</param>
-        /// <returns>Return true or throw an exception.</returns>
-        public static bool IsSaveInFileFrom(List<Transport> listOfTransprt)
-        {
-            if (listOfTransprt == null)
-            {
-                throw new ArgumentNullException();
-            }
-
-            try
-            {
-                FileWriting(listOfTransprt);
-                return true;
-            }
-            catch
-            {
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// Reading from the file.
+        /// Reading data from the file.
         /// </summary>
         /// <param name="listOfTransport">Contains information about the transport.</param>
         private static void FileReading(List<Transport> listOfTransport)
         {
-            using (var reader = new StreamReader(DefaultFileForVehicleInformation))
+            try
             {
-                while (!reader.EndOfStream)
+                var defaultFileForVehicleInformation = ConfigurationManager.AppSettings["NameOfDefaultFile"];
+                using (var reader = new StreamReader(defaultFileForVehicleInformation))
                 {
-                    switch (reader.ReadLine())
+                    while (!reader.EndOfStream)
                     {
-                        case "Car":
-                            var car = CreateCar(reader);
-                            listOfTransport.Add(car);
-                            break;
-                        case "Boat":
-                            var boat = CreateBoat(reader);
-                            listOfTransport.Add(boat);
-                            break;
-                        case "Plane":
-                            var plane = CreatePlane(reader);
-                            listOfTransport.Add(plane);
-                            break;
-                        default:
-                            throw new FormatException();
+                        switch (reader.ReadLine())
+                        {
+                            case "Car":
+                                var car = GetCarFromFile(reader);
+                                listOfTransport.Add(car);
+                                break;
+                            case "Boat":
+                                var boat = GetBoatFromFile(reader);
+                                listOfTransport.Add(boat);
+                                break;
+                            case "Plane":
+                                var plane = GetPlaneFromFile(reader);
+                                listOfTransport.Add(plane);
+                                break;
+                            default:
+                                throw new FormatException();
+                        }
                     }
                 }
             }
+            catch (FileNotFoundException fileException)
+            {
+                throw fileException;
+            }
         }
 
-        private static Boat CreateBoat(StreamReader reader)
+        private static Boat GetBoatFromFile(StreamReader reader)
         {
             return new Boat
             {
@@ -95,7 +77,7 @@ namespace Garage
             };
         }
 
-        private static Car CreateCar(StreamReader reader)
+        private static Car GetCarFromFile(StreamReader reader)
         {
             return new Car
             {
@@ -107,7 +89,7 @@ namespace Garage
             };
         }
 
-        private static Plane CreatePlane(StreamReader reader)
+        private static Plane GetPlaneFromFile(StreamReader reader)
         {
             return new Plane
             {
@@ -117,63 +99,6 @@ namespace Garage
                 FuelQuantity = double.Parse(reader.ReadLine()),
                 NumberOfWheels = int.Parse(reader.ReadLine()),
             };
-        }
-
-        /// <summary>
-        /// Writing to the file.
-        /// </summary>
-        /// <param name="listOfTransprt">Contains information about the transport.</param>
-        private static void FileWriting(List<Transport> listOfTransprt)
-        {
-            using (var writer = new StreamWriter(DefaultFileForVehicleInformation))
-            {
-                foreach (var item in listOfTransprt)
-                {
-                    switch (item.NumberForSearch)
-                    {
-                        case 1:
-                            WriteBoatInformationToFile(writer, item);
-                            break;
-                        case 2:
-                            WriteCarInformationToFile(writer, item);
-                            break;
-                        case 3:
-                            WritePlaneInformationToFile(writer, item);
-                            break;
-                        default:
-                            throw new FormatException();
-                    }
-                }
-            }
-        }
-
-        private static void WriteBoatInformationToFile(StreamWriter writer, Transport item)
-        {
-            writer.WriteLine("Boat");
-            writer.WriteLine(item.MaxSpeed);
-            writer.WriteLine(item.MaxFuelQuantity);
-            writer.WriteLine(item.FuelQuantity);
-            writer.WriteLine(item.RegistrationNumber);
-        }
-
-        private static void WriteCarInformationToFile(StreamWriter writer, Transport item)
-        {
-            writer.WriteLine("Car");
-            writer.WriteLine(item.MaxSpeed);
-            writer.WriteLine(item.MaxFuelQuantity);
-            writer.WriteLine(item.FuelQuantity);
-            writer.WriteLine(item.NumberOfWheels);
-            writer.WriteLine(item.RegistrationNumber);
-        }
-
-        private static void WritePlaneInformationToFile(StreamWriter writer, Transport item)
-        {
-            writer.WriteLine("Plane");
-            writer.WriteLine(item.MaxSpeed);
-            writer.WriteLine(item.MaxFuelQuantity);
-            writer.WriteLine(item.FuelQuantity);
-            writer.WriteLine(item.NumberOfWheels);
-            writer.WriteLine(item.RegistrationNumber);
         }
     }
 }
